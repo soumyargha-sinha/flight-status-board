@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import constants from '../util/constants'
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
 import './detail.css'
 import { getFormattedDateTime } from '../util/datetime';
 import { FaArrowLeft } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const DetailPage = () => {
     const { flightId } = useParams();
+    const [loader, setLoader] = useState(true);
     const navigate = useNavigate();
     const flightDetail: any = useLoaderData();
+    useEffect(() => {
+        if (flightDetail) {
+            setLoader(false);
+        }
+    }, []);
     const assignStatusClass = (statusValue: string) => (constants.statusColors[statusValue] ? constants.statusColors[statusValue] : 'light-red') + ' chip';
-    return (
+    return loader ? (
+        <div className="loading-circle"></div>
+    ) : ((flightDetail && !flightDetail.error) ? (
         <div>
             <div className="ticket">
                 <div className="ticket-header">
@@ -36,13 +45,30 @@ const DetailPage = () => {
             </div>
         </div>
 
-    )
+    ) : (
+        <div className="ticket">
+            <div className="ticket-header">
+                <h1><span className="h-icon-span has-link" onClick={() => navigate('/')}><FaArrowLeft></FaArrowLeft></span>{flightDetail.error}</h1>
+            </div>
+        </div>
+    ))
 }
 
 const flightFetcher = async ({ params }: any) => {
-    const res = await fetch(constants.apiBaseUrl + '/' + params.id);
-    const data = await res.json();
-    return data;
+    try {
+        const res = await fetch(constants.apiBaseUrl + '/' + params.id);
+        const data = await res.json();
+        console.log('loaded data', data);
+        if (data) {
+            data.error ? toast.error(data.error) : toast.success('Flight details loaded successfully.');
+        } else toast.error('Error! Could not fetch flight details');
+        return data;
+    } catch (e) {
+        console.log(e)
+        toast.error('Error! Could not fetch flight details')
+        return {error: 'There was an issue fetching the details.'}
+    }
+
 }
 
 export { DetailPage as default, flightFetcher };

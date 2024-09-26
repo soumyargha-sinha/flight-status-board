@@ -1,31 +1,37 @@
 {
-  "hash": "6a5c9e37",
+  "hash": "c7787e4a",
   "configHash": "bcf1643c",
-  "lockfileHash": "86609a7d",
-  "browserHash": "f719f584",
+  "lockfileHash": "212d6c5d",
+  "browserHash": "98a0e2c7",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "168195cb",
+      "fileHash": "206a9497",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "f2024238",
+      "fileHash": "0979b190",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "f36abc17",
+      "fileHash": "0ef8f529",
       "needsInterop": false
     },
     "react-icons/fa": {
       "src": "../../node_modules/react-icons/fa/index.mjs",
       "file": "react-icons_fa.js",
-      "fileHash": "f9ecc8f3",
+      "fileHash": "99b2ec88",
+      "needsInterop": false
+    },
+    "react-toastify": {
+      "src": "../../node_modules/react-toastify/dist/react-toastify.esm.mjs",
+      "file": "react-toastify.js",
+      "fileHash": "96a10b11",
       "needsInterop": false
     }
   },
