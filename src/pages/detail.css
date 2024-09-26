@@ -7,6 +7,7 @@
     margin: auto;
     padding: 20px;
     color: #272727;
+    margin-top: 2rem;
 }
 
 .ticket-header {
@@ -84,4 +85,18 @@
 
 .light-red {
     background-color: rgb(175, 10, 10);
+}
+
+.h-icon-span {
+    vertical-align: middle;
+    font-size: 1rem;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.has-link {
+    cursor: pointer;
 }

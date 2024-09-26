@@ -66,3 +66,8 @@ td {
 .light-red {
     background-color: rgb(175, 10, 10);
 }
+
+.table-row:hover {
+    background-color: #353535;
+    transition: 0.3s ease;
+}

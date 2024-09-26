@@ -3,6 +3,7 @@ import constants from '../util/constants'
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
 import './detail.css'
 import { getFormattedDateTime } from '../util/datetime';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const DetailPage = () => {
     const { flightId } = useParams();
@@ -13,7 +14,7 @@ const DetailPage = () => {
         <div>
             <div className="ticket">
                 <div className="ticket-header">
-                    <h1>Flight Details</h1>
+                    <h1><span className="h-icon-span has-link" onClick={() => navigate('/')}><FaArrowLeft></FaArrowLeft></span>Flight Details</h1>
                 </div>
                 <div className="ticket-body">
                     <div className="flight-info">
