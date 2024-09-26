@@ -71,3 +71,35 @@ td {
     background-color: #353535;
     transition: 0.3s ease;
 }
+
+.page-button {
+    background: #0877a5;
+    border: 0;
+    font-size: 1rem;
+    padding: 0.3rem 1rem;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 0.2rem;
+    margin-right: 0.4rem;
+    transition: 0.3s ease;
+}
+
+.page-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    font-weight: 100;
+}
+
+.page-button:not(:disabled):hover {
+    background-color: #0d5473;
+}
+
+.page-button:not(:disabled):active {
+    background-color: #0c3649;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

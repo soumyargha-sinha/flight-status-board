@@ -22,9 +22,27 @@ const FlightTable = () => {
             }
         }
         getAllFlights();
+        // setInterval(() => {getAllFlights();}, constants.flightList.tableRefreshTime)
+
     }, []);
+    
     const navigate = useNavigate();
     const navigateToDetailPage = (flightId: any) => { navigate(`/flight/${flightId}`) };
+
+    // pagination
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = constants.flightList.itemsPerPage;
+    const totalPages = Math.ceil(flights.length / itemsPerPage);
+    const currentFlights = flights.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    const nextPage = () => {
+        if (currentPage < totalPages - 1)
+            setCurrentPage((prevPage) => prevPage + 1);
+    };
+    const prevPage = () => {
+        if (currentPage > 0)
+            setCurrentPage((prevPage) => prevPage - 1);
+    };
+
     return (
         <section>
             <h2>View Flights</h2>
@@ -38,7 +56,7 @@ const FlightTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {flights.map((flight: any) => (
+                        {currentFlights.map((flight: any) => (
                             <tr className='table-row has-link' onClick={() => navigateToDetailPage(flight.id)}>
                                 <td>{flight.id}</td>
                                 <td>{flight.flightNumber}</td>
@@ -51,6 +69,10 @@ const FlightTable = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="pagination">
+                <button className='page-button has-link' onClick={prevPage} disabled={currentPage === 0}>Previous</button>
+                <button className='page-button has-link' onClick={nextPage} disabled={currentPage === totalPages - 1}>Next</button>
             </div>
         </section>
     )
