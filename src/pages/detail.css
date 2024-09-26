@@ -1,0 +1,87 @@
+.ticket {
+    background: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    color: #272727;
+}
+
+.ticket-header {
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.ticket-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+}
+
+.flight-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.flight-details,
+.flight-dates {
+    flex: 1;
+}
+
+.flight-details h2,
+.passenger-info h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.ticket-footer {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: bold;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .flight-info {
+        flex-direction: column;
+    }
+    .flight-details,
+    .flight-dates {
+        margin-bottom: 1rem;
+    }
+}
+
+.chip {
+    padding: 0.3rem;
+    border: 0;
+    border-radius: 0.2rem;
+    letter-spacing: 0.06rem;
+    font-size: 0.8rem;
+    color: #FFF;
+}
+
+.pale-blue {
+    background-color: rgb(52, 88, 146);
+}
+
+.bright-blue {
+    background-color: rgb(37, 37, 212);
+}
+
+.medium-green {
+    background-color: rgb(15, 132, 52);
+}
+
+.dark-red {
+    background-color: rgb(121, 17, 17);
+}
+
+.light-red {
+    background-color: rgb(175, 10, 10);
+}
