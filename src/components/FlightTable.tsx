@@ -14,7 +14,6 @@ const FlightTable = () => {
             try {
                 const response = await fetch(url);
                 const flightList = await response.json();
-                console.log(flightList)
                 setFlights(flightList);
             } catch (e) {
                 console.log('Error getting a response', e);
@@ -47,6 +46,7 @@ const FlightTable = () => {
     return (
         <section>
             <h2>View Flights</h2>
+            <p>Data is auto-refreshed every {constants.flightList.tableRefreshTime} ms</p>
             <div className="flight-table">
                 <table>
                     <thead>
