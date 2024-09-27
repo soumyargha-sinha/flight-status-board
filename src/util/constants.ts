@@ -3,7 +3,7 @@ const constants = {
     flightList: {
         tableHeaders: ['ID', 'Flight Number', 'Airline', 'Origin', 'Destination', 'Departure Time', 'Status'],
         tableRefreshTime: 40000,
-        itemsPerPage: 4
+        itemsPerPage: 5
     },
     statusColors: {
         'Departed': 'pale-blue',

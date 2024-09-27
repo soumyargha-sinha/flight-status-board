@@ -14,6 +14,7 @@ const FlightTable = () => {
             try {
                 const response = await fetch(url);
                 const flightList = await response.json();
+                console.log(flightList)
                 setFlights(flightList);
             } catch (e) {
                 console.log('Error getting a response', e);
@@ -22,10 +23,10 @@ const FlightTable = () => {
             }
         }
         getAllFlights();
-        // setInterval(() => {getAllFlights();}, constants.flightList.tableRefreshTime)
+        setInterval(() => {getAllFlights();}, constants.flightList.tableRefreshTime)
 
     }, []);
-    
+
     const navigate = useNavigate();
     const navigateToDetailPage = (flightId: any) => { navigate(`/flight/${flightId}`) };
 
@@ -50,14 +51,14 @@ const FlightTable = () => {
                 <table>
                     <thead>
                         <tr>
-                            {constants.flightList.tableHeaders.map((headerKey: string) => (
-                                <th>{headerKey}</th>
+                            {constants.flightList.tableHeaders.map((headerKey: string, index: number) => (
+                                <th key={index}>{headerKey}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {currentFlights.map((flight: any) => (
-                            <tr className='table-row has-link' onClick={() => navigateToDetailPage(flight.id)}>
+                            <tr key={flight.id} className='table-row has-link' onClick={() => navigateToDetailPage(flight.id)}>
                                 <td>{flight.id}</td>
                                 <td>{flight.flightNumber}</td>
                                 <td>{flight.airline}</td>
@@ -70,10 +71,14 @@ const FlightTable = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination">
-                <button className='page-button has-link' onClick={prevPage} disabled={currentPage === 0}>Previous</button>
-                <button className='page-button has-link' onClick={nextPage} disabled={currentPage === totalPages - 1}>Next</button>
-            </div>
+            {flights && flights.length > 0 && (
+                <div className="pagination">
+                    <button className='page-button has-link' onClick={prevPage} disabled={currentPage === 0}>Previous</button>
+                    <button className='page-button has-link' onClick={nextPage} disabled={currentPage === totalPages - 1}>Next</button>
+                </div>
+            )}
+
+
         </section>
     )
 }
